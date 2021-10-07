@@ -1,0 +1,15 @@
+
+.padding-top {
+  padding-top: 20px;
+}
+
+
+
+.btn {
+  background-color: #d51067;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\actualiza-estudios-clinicos",
+    "\\src\\app\\actualiza-postulacion",
+    "\\src\\app\\actualiza-programa-apoyo",
+    "\\src\\app\\agrega-estudio-clinico",
+    "\\src\\app\\agregar-programa-apoyo",
+    "\\src\\app\\agregar-usuario",
+    "\\src\\app\\layout\\header"
+  ],
+  "SelectedNode": "\\src\\app\\update-news\\update-news.component.css",
+  "PreviewInSolutionExplorer": false
+}

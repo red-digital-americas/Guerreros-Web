@@ -1,0 +1,170 @@
+<app-header></app-header>
+
+<div>
+  <div class="spacer"></div>
+  <div class="container-fluid padding-top">
+    <div class="row justify-content-center">
+
+      <div class="col-3 d-none d-md-block">
+        <div class="menu-fijo justify-content-left">
+
+          <p class="menu" [routerLink]="['/dashboard']">
+            <span class="material-icons-outlined">
+              dashboard
+            </span>
+            Dashboard
+          </p>
+          <p class="menu" [routerLink]="['/usuarios']">
+            <span class="material-icons-outlined">
+              account_circle
+            </span>
+            Usuarios
+          </p>
+          <p class="menu" [routerLink]="['/enlistapostulantes']">
+            <span class="material-icons-outlined">
+              checklist
+            </span>
+            Postulaciones
+          </p>
+          <p class="menu" [routerLink]="['/enlistaestudios']">
+            <span class="material-icons-outlined">
+              biotech
+            </span>
+            Estudios clínicos
+          </p>
+          <p class="menu" [routerLink]="['/enlistaApoyos']">
+            <span class="material-icons-outlined">
+              library_books
+            </span>
+            Programas de apoyo
+          </p>
+          <p class="menu active-menu" [routerLink]="['/news']">
+            <span class="material-icons-outlined">
+              campaign
+            </span>
+            Noticias
+          </p>
+
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-9">
+
+        <div class="row">
+          <div class="col-3 end">
+            <button class="btn" routerLink='/addnews/'>
+              Agregar
+              <span class="material-icons">people</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="spacer"></div>
+          <br />
+        </div>
+
+        <div class="row">
+
+          <div class="row">
+            <br />
+          </div>
+
+          <div class="row justify-content-center">
+
+            <div class="col-12 col-md-11">
+              <div class="table-responsive justify-content-center">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>
+                        Imagen
+                      </th>
+                      <th>
+                        Titulo
+                      </th>
+                      <th>
+                        Categoria
+                      </th>
+                      <th>
+                        Fecha noticia
+                      </th>
+
+                      <th>
+
+                      </th>
+                      <th>
+
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of result">
+
+                    <tr class="spacer">
+
+                      <td>
+                        <div class="image">
+                          <img src="{{item.pathImage}}" class="image" />
+                        </div>
+
+                      </td>
+
+
+                      <td>
+
+                        {{ item.title }}
+
+
+                      </td>
+
+
+
+
+                      <td>
+                        {{ item.studyName }}
+                      </td>
+
+                      <td>
+                        {{ item.dateNews | date :'short' }}
+                      </td>
+
+
+                      <td>
+                        <button class="btn" (click)="enviaUpdate(item.id);">
+
+                          Actualizar
+                        </button>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+  
+</div>
+
+
+
+
+
+
+
+

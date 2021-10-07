@@ -1,0 +1,12 @@
+
+.logo {
+  width: 50%;
+ 
+  
+  object-fit: contain;
+  margin-left: 30px;
+}
+
+.navbar-custom {
+  background-color: #fafafa;
+}

@@ -1,0 +1,146 @@
+<div class="spacer"></div>
+
+
+<div class="container padding-top">
+  <div class="spacer"></div>
+
+  <div class="row">
+    <div class="col-6">
+
+
+      <button class="btn" routerLink='/enlistapostulantes/'>
+        <span class="material-icons">
+          chevron_left
+        </span>
+        Regresar
+
+      </button>
+
+    </div>
+
+    <div class="col-6 end">
+      <button class="btn btn-success flex" (click)="guardarPostulante();">
+        Guardar
+        <span class="material-icons">
+          save
+        </span>
+      </button>
+    </div>
+    <br>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <span style="font-weight: bold;">Categorias:</span>
+
+      <select class="form-control" [(ngModel)]="categoriaId" (change)="getEstudios()">
+        <option [value]="0">
+          -Todos-
+        </option>
+        <option *ngFor="let item of categorias" [value]="item.id">
+          {{item.name}}
+        </option>
+      </select>
+
+    </div>
+
+    <div class="col-3">
+      <span style="font-weight: bold;">Estudios:</span>
+
+      <select class="form-control" [(ngModel)]="estudioId">
+        <option [value]="0">
+          -Todos-
+        </option>
+        <option *ngFor="let item of estudios" [value]="item.id">
+          {{item.title}}
+        </option>
+      </select>
+
+    </div>
+
+
+
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+
+  <div class=" row">
+    <div class="col-6">
+      <span style="font-weight: bold;">Padecimiento:</span>
+      <div class="form-group">
+        <input class="form-control input_text" name="Nombre" type="text" placeholder="Escribe el padecimiento"
+               [(ngModel)]="data.Suffering" required />
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <span style="font-weight: bold;">Información:</span>
+      <div class="form-group">
+        <textarea class="form-control" [(ngModel)]="data.RelevantDate"
+                  placeholder="Información médica relevante del paciente" name="textarea" rows="10" cols="50"></textarea>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class=" row">
+    <div class="col-6">
+      <span style="font-weight: bold;">Teléfono:</span>
+      <div class="form-group">
+        <input class="form-control" name="Nombre" type="number" placeholder="Escribe el número de teléfono"
+               [(ngModel)]="data.Phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="12" />
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <span style="font-weight: bold;">Email:</span>
+      <div class="form-group">
+        <input class="form-control input_text" name="Email" type="text" placeholder="Escribe tu correo electrónico"
+               [(ngModel)]="data.Email" required />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+
+  </div>
+
+
+</div>

@@ -1,0 +1,272 @@
+<app-header></app-header>
+
+<div>
+  <div class="spacer"></div>
+  <div class="container-fluid padding-top">
+    <div class="row justify-content-center">
+
+      <div class="col-3 d-none d-md-block">
+        <div class="menu-fijo justify-content-left">
+
+          <p class="menu" [routerLink]="['/dashboard']">
+            <span class="material-icons-outlined">
+              dashboard
+            </span>
+            Dashboard
+          </p>
+          <p class="menu" [routerLink]="['/usuarios']">
+            <span class="material-icons-outlined">
+              account_circle
+            </span>
+            Usuarios
+          </p>
+          <p class="menu" [routerLink]="['/enlistapostulantes']">
+            <span class="material-icons-outlined">
+              checklist
+            </span>
+            Postulaciones
+          </p>
+          <p class="menu active-menu" [routerLink]="['/enlistaestudios']">
+            <span class="material-icons-outlined">
+              biotech
+            </span>
+            Estudios clínicos
+          </p>
+          <p class="menu" [routerLink]="['/enlistaApoyos']">
+            <span class="material-icons-outlined">
+              library_books
+            </span>
+            Programas de apoyo
+          </p>
+          <p class="menu" [routerLink]="['/news']">
+            <span class="material-icons-outlined">
+              campaign
+            </span>
+            Noticias
+          </p>
+
+
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-9">
+
+        <div class="row">
+          <div class="col-3 end">
+            <button class="btn" routerLink='/addEstudiosClinicos/'>
+              Agregar
+              <span class="material-icons">people</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="spacer"></div>
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <span style="font-weight: bold;">Fecha inicial:</span>
+            <div class="form-group">
+              <input class="form-control" type="date" [(ngModel)]="fechaInicial" (ngModelChange)="getEstuciosClinicos()" cols="100" id="hobbies"
+                     placeholder="Ingrese el nombre de la vacante">
+            </div>
+          </div>
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Fecha final:</span>
+            <div class="form-group">
+              <input class="form-control" type="date" [(ngModel)]="FechaFinal" (ngModelChange)="getEstuciosClinicos()" cols="100" id="hobbies"
+                     placeholder="Ingrese el nombre de la vacante">
+            </div>
+          </div>
+
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Estatus:</span>
+
+            <select class="form-control" [(ngModel)]="estatusId" (change)="getEstuciosClinicos()">
+              <option [value]="0">
+                -Todos-
+              </option>
+              <option *ngFor="let item of estatus" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+
+          </div>
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Categoria del estudio:</span>
+
+            <select class="form-control" [(ngModel)]="categoriaId" (change)="getEstuciosClinicos()">
+              <option [value]="0">
+                -Todos-
+              </option>
+              <option *ngFor="let item of categorias" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+
+          </div>
+
+          <div class="row">
+            <br />
+          </div>
+
+          <div class="row">
+
+            <div class="col-12 col-md-12">
+              <div class="table-responsive">
+                <table class="table  table-condensed">
+                  <thead>
+                    <tr>
+                      <th>
+                        Nombre
+                      </th>
+                      <th>
+                        Categoria
+                      </th>
+                      <th>
+                        Estatus
+                      </th>
+                      <th>
+                        Aprobado
+                      </th>
+                      <th>
+                        Fecha Publicación
+                      </th>
+                      <th>
+
+                      </th>
+                      <th>
+
+                      </th>
+                      <th>
+
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of result">
+
+                    <tr class="spacer">
+
+
+
+
+                      <td>
+
+                        {{ item.nombreEstudio }}
+
+
+                      </td>
+
+                      <td>
+                        {{ item.categoria }}
+
+                      </td>
+
+                      <td>
+                        {{ item.estatus }}
+                      </td>
+
+                      <td>
+                        {{ item.strAprobado }}
+                      </td>
+
+                      <td>
+                        {{ item.fechaPublicacion | date :'short' }}
+                      </td>
+
+                      <td>
+                        <button class="btn" (click)="modalDetalleEstudio(item.ensayoClinicoId);">
+
+                          Detalle
+
+                        </button>
+                      </td>
+
+                      <td>
+                        <button class="btn" (click) ="eliminarEstudio(item.ensayoClinicoId);">
+
+                          Eliminar
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn" (click)="enviaUpdate(item.ensayoClinicoId);">
+
+                          Actualizar
+                        </button>
+                        
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+
+<ng-template #pdetalleModal let-modal>
+  <div class="modal-header col-form">
+    <h1>Detalle estudio clínico</h1>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+
+    </button>
+  </div>
+  <div class="modal-body col-form">
+
+    <div class="card">
+      <div class="card-header">
+        Intervensión principal: {{resultdetalle.mainIntervention}}
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-5">
+            <p class="card-text"># de Protocolo: {{resultdetalle.protocolNumber}}</p>
+            <p class="card-text">Rango de edad: {{resultdetalle.ageRange}}</p>
+
+            <p class="card-text">Fecha publicación: {{resultdetalle.publicationDate | date: 'dd/MM/yyyy'}}</p>
+
+          </div>
+          <div class="col-2">
+
+          </div>
+          <div class="col-5">
+            <p class="card-text" style="font-weight: bold;font-size: 17px;color:blue;">Tipo estudio: {{resultdetalle.studyTypeDescription}}</p>
+            
+            <p class="card-text">
+              Descripción del estudio:<br />
+              {{resultdetalle.description}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer col-form">
+    <!--<button class="guardar" (click)="saveEsperiencia()">Guardar</button>-->
+  </div>
+</ng-template>

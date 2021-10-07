@@ -1,0 +1,203 @@
+<app-header></app-header>
+
+<div>
+  <div class="spacer"></div>
+  <div class="container-fluid padding-top">
+    <div class="row justify-content-center">
+      <div class="col-3 d-none d-md-block">
+        <div class="menu-fijo justify-content-left">
+
+          <p class="menu active-menu" [routerLink]="['/dashboard']">
+            <span class="material-icons-outlined">
+              dashboard
+            </span>
+            Dashboard
+          </p>
+          <p class="menu" [routerLink]="['/usuarios']">
+            <span class="material-icons-outlined">
+              account_circle
+            </span>
+            Usuarios
+          </p>
+          <p class="menu" [routerLink]="['/enlistapostulantes']">
+            <span class="material-icons-outlined">
+              checklist
+            </span>
+            Postulaciones
+          </p>
+          <p class="menu" [routerLink]="['/enlistaestudios']">
+            <span class="material-icons-outlined">
+              biotech
+            </span>
+            Estudios clínicos
+          </p>
+          <p class="menu" [routerLink]="['/enlistaApoyos']">
+            <span class="material-icons-outlined">
+              library_books
+            </span>
+            Programas de apoyo
+          </p>
+          <p class="menu" [routerLink]="['/news']">
+            <span class="material-icons-outlined">
+              campaign
+            </span>
+            Noticias
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-9">
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <div class="Rectangle">
+              Total de postulaciones<br /><br />
+                                          <h1>{{ Result.totalPostulaciones}}</h1>
+            </div>
+            
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="Rectangle">
+              Total Médicos registrados<br />
+                                       <h1>{{ Result.totalMedicos}}</h1>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="Rectangle">
+              Total Médicos registrados del Mes<br />
+                                               <h1>{{ Result.totalMedicosRegistradosNes}}</h1>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="Rectangle">
+              Total Estudios compartidos<br />
+                                        <h1>{{ Result.totalEstudiosCompartidos}}</h1>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <br />
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="chart-wrapper">
+              <p style="text-align: center; font-weight: bold;">Postulados por estudio</p>
+              <canvas baseChart
+                      [data]="pieChartData"
+                      [labels]="pieChartLabels"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="pieChartColors"
+                      [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="chart-wrapper">
+              <p style="text-align: center; font-weight: bold;">Veces compartidas por estudio</p>
+              <canvas baseChart
+                      [data]="pieChartDatados"
+                      [labels]="pieChartLabelsdos"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="pieChartColors"
+                      [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="chart-wrapper">
+              <p style="text-align:center;font-weight:bold;">Postulaciones por médico</p>
+              <canvas baseChart
+                      [data]="pieChartDatatres"
+                      [labels]="pieChartLabelstres"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="pieChartColors"
+                      [legend]="pieChartLegend">
+              </canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <br />
+          <br />
+          <br />
+          
+        </div>
+        <div class="row">
+          <p style="text-align: center; font-weight: bold;">Detalle operaciones médico</p>
+          <div class="col-12 col-md-11">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                      Nombre
+                    </th>
+                    <th>
+                      Estudio clínico
+                    </th>
+                    <th>
+                      # de postulaciones
+                    </th>
+                    <th>
+                      Fecha registro
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of Result.listaMedicosPostulaciones">
+
+                  <tr>
+
+                    <td>
+                      {{ item.nombreMedico }}
+                    </td>
+
+                    <td>
+                      {{ item.nombreEstudioClinico }}
+
+                    </td>
+
+                    <td>
+                      {{ item.numeroPostulaciones }}
+                    </td>
+
+                    <td>
+                      {{ item.fechaRegistroMedico | date :'short' }}
+                    </td>
+
+                    
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

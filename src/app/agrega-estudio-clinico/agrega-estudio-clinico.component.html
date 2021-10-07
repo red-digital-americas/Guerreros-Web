@@ -1,0 +1,234 @@
+<div class="spacer"></div>
+
+<div class="container padding-top">
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn" routerLink="/enlistaestudios/">
+        <span class="material-icons"> chevron_left </span>
+        Regresar
+      </button>
+    </div>
+
+    <div class="col-6 end">
+      <button class="btn btn-success flex" (click)="guardarEstudios()">
+        Guardar
+        <span class="material-icons"> save </span>
+      </button>
+    </div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <span style="font-weight: bold">Fecha de publicación:</span>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="date"
+          [(ngModel)]="data.PublicationDate"
+          cols="100"
+          id="fc"
+          placeholder="Ingrese el nombre de la vacante"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <span style="font-weight: bold">Categorias:</span>
+      <select class="form-control" [(ngModel)]="data.StudyCategoryId">
+        <option [value]="0">-Todos-</option>
+        <option *ngFor="let item of categorias" [value]="item.id">
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-4">
+      <span style="font-weight: bold">Estatus:</span>
+      <select class="form-control" [(ngModel)]="data.SatatusId">
+        <option [value]="0">-Todos-</option>
+        <option *ngFor="let item of estatus" [value]="item.id">
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <span style="font-weight: bold">Nombre de la enfermedad:</span>
+      <div class="form-group">
+        <input
+          class="form-control input_text"
+          name="enfermedad"
+          type="text"
+          maxlength="200"
+          placeholder="Escribe nombre de la enfermedad"
+          [(ngModel)]="data.name"
+          required
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <span style="font-weight: bold">Titulo:</span>
+      <div class="form-group">
+        <input
+          class="form-control input_text"
+          name="titulo"
+          type="text"
+          maxlength="200"
+          placeholder="Escribe el titulo del estudio clinico"
+          [(ngModel)]="data.Title"
+          required
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <span style="font-weight: bold">Contenido:</span>
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          [(ngModel)]="data.StudyContent"
+          placeholder="Contenido del estudio clinico"
+          name="textarea"
+          rows="10"
+          maxlength="700"
+          cols="50"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <span style="font-weight: bold">Intervensión:</span>
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          [(ngModel)]="data.MainIntervention"
+          placeholder="Intervensión principal"
+          name="textarea"
+          maxlength="100"
+          rows="10"
+          cols="50"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <span style="font-weight: bold">Descripción:</span>
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          [(ngModel)]="data.Description"
+          placeholder="Ingresa la descripción del estudio"
+          maxlength="700"
+          name="textarea"
+          rows="10"
+          cols="50"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <span style="font-weight: bold">Protocolo:</span>
+      <div class="form-group">
+        <input
+          class="form-control input_text"
+          name="titulo"
+          type="text"
+          placeholder="# de protocolo"
+          [(ngModel)]="data.ProtocolNumber"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <span style="font-weight: bold">Población dirigida :</span>
+      <select class="form-control" [(ngModel)]="data.ageRangeId">
+        <option *ngFor="let item of edades" [value]="item.id">
+          {{ item.ageRange }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <span style="font-weight: bold">Tipo de estudio:</span>
+      <select class="form-control" [(ngModel)]="data.StudyTypeId">
+        <option [value]="0">-Todos-</option>
+        <option *ngFor="let item of tipoEstudios" [value]="item.id">
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-4">
+      <span style="font-weight: bold">Aprobación:</span>
+      <select class="form-control" [(ngModel)]="data.approved">
+        <option [value]="false">Sin aprobar</option>
+        <option [value]="true">Aprobado</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="spacer"></div>
+    <br />
+  </div>
+</div>

@@ -1,0 +1,71 @@
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+
+
+      <div class="card_login">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <section class="email" *ngIf="!ingresaPs">
+              <div>
+                <img src="./assets/login/logoGuerreros.png"  class="logo" />
+              </div>
+
+              <p class="Titulo">
+                Ingres&aacute; tus datos
+              </p>
+
+
+              <form [formGroup]="new" (ngSubmit)="ingresar();">
+
+                <div>
+
+
+
+                  <div class="inputContainer">
+                    <fa-icon class="icon" [icon]="faEmail"></fa-icon>
+                    <input formControlName="email" [(ngModel)]="email" required class="form-control Rectangle_text" name="email" type="text" placeholder="Direcci&oacute;n de email" />
+
+                  </div>
+
+                  
+                </div>
+
+
+                <div>
+
+
+                  <span class="fa fa-lock form-control-feedback"></span>
+                  <input formControlName="password" [(ngModel)]="password" required maxlength="8" class="form-control Rectangle_textp"
+                         name="password" type="{{type.uno}}" placeholder="Ingresa tu contrase&ntilde;a" />
+
+                  
+                  
+                  
+                  
+                </div>
+                <div style="text-align:left;margin-bottom:45px;">
+                  <a class="olvidepassw" style="cursor:pointer;" (click)="recuperapassword();">
+                    Olvid&eacute; mi contrase&ntilde;a
+                  </a>
+                </div>
+
+                <div>
+                  <button class="btn_ingresar">Ingresar</button>
+                </div>
+              </form>
+
+              
+            </section>
+
+            
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+

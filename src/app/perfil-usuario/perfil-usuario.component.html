@@ -1,0 +1,223 @@
+<app-header></app-header>
+
+<div>
+  <div class="spacer"></div>
+  <div class="container-fluid padding-top">
+    <div class="row justify-content-center">
+
+      <div class="col-3 d-none d-md-block">
+        <div class="menu-fijo justify-content-left">
+
+
+          <p class="menu" [routerLink]="['/dashboard']">
+            <span class="material-icons-outlined">
+              dashboard
+            </span>
+            Dashboard
+          </p>
+          <p class="menu active-menu" [routerLink]="['/usuarios']">
+            <span class="material-icons-outlined">
+              account_circle
+            </span>
+            Usuarios
+          </p>
+          <p class="menu" [routerLink]="['/enlistapostulantes']">
+            <span class="material-icons-outlined">
+              checklist
+            </span>
+            Postulaciones
+          </p>
+          <p class="menu" [routerLink]="['/enlistaestudios']">
+            <span class="material-icons-outlined">
+              biotech
+            </span>
+            Estudios clínicos
+          </p>
+          <p class="menu" [routerLink]="['/enlistaApoyos']">
+            <span class="material-icons-outlined">
+              library_books
+            </span>
+            Programas de apoyo
+          </p>
+          <p class="menu" [routerLink]="['/news']">
+            <span class="material-icons-outlined">
+              campaign
+            </span>
+            Noticias
+          </p>
+
+
+        </div>
+      </div>
+
+      <div class="col-12 col-md-9">
+
+        <div class="row">
+          <div class="col-3 end">
+            <button class="btn" routerLink='/addusuarios/'>
+              Agregar
+              <span class="material-icons">people</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="spacer"></div>
+          <br />
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <span style="font-weight: bold;">Fecha inicial:</span>
+            <div class="form-group">
+              <input class="form-control" type="date" [(ngModel)]="fechaInicial" (ngModelChange)="getUsuarios()" cols="100" id="hobbies"
+                     placeholder="Ingrese el nombre de la vacante">
+            </div>
+          </div>
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Fecha final:</span>
+            <div class="form-group">
+              <input class="form-control" type="date" [(ngModel)]="FechaFinal" (ngModelChange)="getUsuarios()" cols="100" id="hobbies"
+                     placeholder="Ingrese el nombre de la vacante">
+            </div>
+          </div>
+
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Especialidad:</span>
+
+            <select class="form-control" [(ngModel)]="especialidad" (change)="getUsuarios()">
+              <option [value]="0">
+                -Todos-
+              </option>
+              <option *ngFor="let item of especialidades" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+
+          </div>
+
+          <div class="col-3">
+            <span style="font-weight: bold;">Nombre</span>
+            <div class="form-group">
+              <input class="form-control" type="text" [(ngModel)]="filter.nombre" cols="100" id="hobbies"
+                     placeholder="Nombre">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <br />
+        </div>
+
+        <div class="row">
+
+          <div class="col-12 col-md-11">
+            <div class="table-responsive">
+              <table class="table  table-condensed">
+                <thead>
+                  <tr>
+                    <th>
+                      Avatar
+                    </th>
+                    <th>
+                      Nombre
+                    </th>
+                    <th>
+                      Especialidad
+                    </th>
+                    <th>
+                      Cedula
+                    </th>
+                    <th>
+                      Fecha registro
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of result | filterBy : filter">
+
+                  <tr class="spacer">
+
+
+
+
+                    <td>
+
+
+                      <div class="avatar" *ngIf="item.avatar ==null; else muestra">
+                        <img src="./assets/icon/avatar.svg" id="usuario" style="margin-top:10px;">
+
+                      </div>
+
+
+                      <ng-template #muestra>
+                        <div class="avatar">
+                          <img  src="{{ item.avatar }}" id="usuario">
+                        </div>
+
+                      </ng-template>
+
+
+
+                                           
+                    </td>
+
+                    <td>
+                      {{ item.nombre }}
+
+                    </td>
+
+                    <td>
+                      {{ item.especialidad }}
+                    </td>
+
+                    <td>
+                      {{ item.cedula }}
+                    </td>
+
+                    <td>
+                      {{ item.fechaRegistro | date :'short' }}
+                    </td>
+
+                    <td>
+                      <button class="btn" (click)="enviaUpdate(item.userId);">
+
+                        Actualizar
+                      </button>
+                    </td>
+                    <td>
+                      <button class="btn" (click)="eliminarUsuario(item.userId);">
+
+                        Eliminar
+                      </button>
+                    </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    </div>
+
+
+</div>
