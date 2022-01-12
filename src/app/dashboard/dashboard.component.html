@@ -51,10 +51,10 @@
         <div class="row">
           <div class="col-12 col-md-3">
             <div class="Rectangle">
-              Total de postulaciones<br /><br />
+              Total de postulaciones<br />
                                           <h1>{{ Result.totalPostulaciones}}</h1>
             </div>
-            
+
           </div>
 
           <div class="col-12 col-md-3">
@@ -135,7 +135,7 @@
           <br />
           <br />
           <br />
-          
+
         </div>
         <div class="row">
           <p style="text-align: center; font-weight: bold;">Detalle operaciones médico</p>
@@ -156,7 +156,7 @@
                     <th>
                       Fecha registro
                     </th>
-                    
+
                   </tr>
                 </thead>
                 <tbody *ngFor="let item of Result.listaMedicosPostulaciones">
@@ -180,7 +180,7 @@
                       {{ item.fechaRegistroMedico | date :'short' }}
                     </td>
 
-                    
+
 
 
                   </tr>
